@@ -48,6 +48,17 @@ body {
     font-family: 'HankenGrotesk';
     font-weight: 500;
     line-height: 1.4;
+    display: flex;
+    justify-content: space-evenly;
+    flex-direction: column;
+    align-items: center;
+    height: 100vh;
+    width: 100vw;
+
+    @media only screen and (max-width: $bp-small) {
+        height: auto;
+        width: auto;
+    }
 }
 
 //UTILITIES
@@ -87,7 +98,7 @@ p {
 .container {
     background-color: $color-white;
     display: flex;
-    margin: 10rem auto;
+    //margin: 10rem auto;
     max-width: 75rem;
     border-radius: 2rem;
     box-shadow: 2rem 2rem 10rem rgba($color-gray-blue, 0.1);
