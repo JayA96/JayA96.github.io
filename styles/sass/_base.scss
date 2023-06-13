@@ -1,3 +1,26 @@
+//COLOR VARIABLES
+$color-red: hsl(0, 100%, 67%);
+$color-orange: hsl(39, 100%, 56%);
+$color-teal: hsl(166, 100%, 37%);
+$color-blue: hsl(234, 85%, 45%);
+
+$color-slate-blue: hsl(252, 100%, 67%);
+$color-royal-blue: hsl(241, 81%, 54%);
+$color-violet-blue: hsla(256, 72%, 46%, 1);
+$color-persian-blue: hsla(241, 72%, 46%, 0);
+
+$color-white: hsl(0, 0%, 100%);
+$color-pale-blue: hsl(221, 100%, 96%);
+$color-lavender: hsl(241, 100%, 89%);
+$color-gray-blue: hsl(224, 30%, 27%);
+
+//FONT VARIABLES
+$font-primary: 'HankenGrotesk';
+
+//BREAKPOINT VARIABLES
+$bp-small: 47em;        //750px
+$bp-smallest: 18.75em;  //300px
+
 //BASE
 @font-face {
     font-family: 'HankenGrotesk';
@@ -15,15 +38,198 @@
 html {
     box-sizing: border-box;
     font-size: 62.5%;
+
+    @media only screen and (max-width: $bp-smallest) {
+        font-size: 50%;
+    }
 }
 
 body {
     font-family: 'HankenGrotesk';
+    font-weight: 500;
+    line-height: 1.4;
 }
 
-//VARIABLES
+//UTILITIES
+.mb-xs { margin-bottom: 1rem; }
+.mb-sm { margin-bottom: 2rem; }
+.mb-md { margin-bottom: 3rem; }
+.mb-lg { margin-bottom: 4rem; }
+.mb-xl { margin-bottom: 8rem; }
 
+//TYPOGRAPHY
+.heading-1 {
+    font-size: 6rem;
+    font-weight: 800;
+}
 
-//CONTAINER
+.heading-2 {
+    font-size: 3rem;
+    font-weight: 700;
+}
 
+.heading-3 {
+    font-size: 2.5rem;
+    font-weight: 500;
+}
 
+.heading-4 {
+    font-size: 1.8rem;
+    font-weight: 500;
+}
+
+p {
+    font-size: 1.6rem;
+    font-weight: 500;
+}
+
+//LAYOUT
+.container {
+    background-color: $color-white;
+    display: flex;
+    margin: 10rem auto;
+    max-width: 75rem;
+    border-radius: 2rem;
+    box-shadow: 2rem 2rem 10rem rgba($color-gray-blue, 0.1);
+
+    @media only screen and (max-width: $bp-small) {
+        flex-direction: column;
+        max-width: 37.5rem;
+        margin: 0 auto;
+        margin-bottom: 5rem;
+        border-radius: 0;
+    }
+}
+
+.left, .right {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    padding: 4rem;
+    justify-content: space-between;
+
+    @media only screen and (max-width: $bp-small) {
+        padding: 3rem;
+    }
+}
+
+.left {
+    background-image: linear-gradient(to bottom, $color-slate-blue, $color-royal-blue);
+    border-radius: 2rem;
+    color: $color-lavender;
+    text-align: center;
+    align-items: center;
+
+    @media only screen and (max-width: $bp-small) {
+        border-radius: 0 0 2rem 2rem;
+    }
+
+    &__score {
+        background-image: linear-gradient(to top, $color-persian-blue, $color-violet-blue);
+        width: 18rem;
+        height: 18rem;
+        border-radius: 50%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+
+        @media only screen and (max-width: $bp-small) {
+            width: 14rem;
+            height: 14rem;
+        }
+
+        &>.heading-1 {
+            color: $color-white;
+            line-height: 1;
+        }
+
+        &>p {
+            color: rgba($color-lavender, 0.5);
+        }
+    }
+
+    &__description {
+        padding: 0.5rem 3rem;
+        
+        &>.heading-2 {
+            color: $color-white;
+        }
+    }
+}
+
+.right {
+    color: $color-gray-blue;
+}
+
+//COMPONENTS
+.results {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+
+    &__item {
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        padding: 1rem 2rem;
+        border-radius: 1rem;
+        gap: 1rem;
+    }
+}
+
+.reaction {
+    color: $color-red;
+    background-color: rgba($color-red, 0.1);
+}
+
+.memory {
+    color: $color-orange;
+    background-color: rgba($color-orange, 0.1);
+}
+
+.verbal {
+    color: $color-teal;
+    background-color: rgba($color-teal, 0.1);
+}
+
+.visual {
+    color: $color-blue;
+    background-color: rgba($color-blue, 0.1);
+}
+
+.score {
+    margin-left: auto;
+    font-size: 2rem;
+    font-weight: 700;
+    color: rgba($color-gray-blue, 0.5);
+
+    &__value {
+        color: $color-gray-blue;
+    }
+}
+
+.btn {
+    border: none;
+    margin-top: auto;
+    font-size: 1.8rem;
+    font-weight: 700;
+    line-height: 1;
+    color: $color-white;
+    padding: 2rem;
+    border-radius: 2.9rem;
+    background-color: $color-gray-blue;
+    cursor: pointer;
+
+    &:hover {
+        background-image: linear-gradient(to bottom, $color-slate-blue, $color-royal-blue);
+    }
+
+    &:active {
+        box-shadow: 2rem 2rem 10rem rgba($color-gray-blue, 0.5) inset;
+        transform: translateY(2px);
+    }
+}
+
+//ATTRIBUTION
+.attribution { font-size: 11px; text-align: center; }
+.attribution a { color: hsl(228, 45%, 44%); }
